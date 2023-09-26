@@ -69,7 +69,7 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 ```bash
-  git clone https://github.com/meryemsanem/blog-app.git
+  git clone https://github.com/meryemsanem/Blog-app-ruby.git
 ```
 
 ### Install
@@ -77,7 +77,7 @@ Clone this repository to your desired folder:
 Install this project with:
 
 ```bash
-  cd blog-app
+  cd blog-app-ruby
   bundle install
 ```
 
@@ -90,10 +90,12 @@ it will install the required gemfile for running the project
 
 ## 👥 Author <a name="author"></a>
 
-👤 Meryem Sanem Küçükbayram
+👤 **Tchasinga jacques**
+- GitHub: [@Tchasinga Jack](https://github.com/tchasinga)
+- Twitter: [@tchasingajacques](https://twitter.com/TchasingaJacque)
+- LinkedIn: [@tchasingajaques](https://www.linkedin.com/in/tchasinga-jacques-76aba7214/)
 
-- GitHub: [Meryem Sanem Küçükbayram](https://github.com/meryemsanem)
-- LinkedIn: [Meryem Sanem Küçükbayram](https://www.linkedin.com/in/meryemsanemkucukbayram/)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -111,7 +113,7 @@ it will install the required gemfile for running the project
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/meryemsanem/blog-app/issues).
+Feel free to check the [issues page](https://github.com/tchasinga/Blog-app-ruby/issues/2).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
