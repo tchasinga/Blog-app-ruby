@@ -7,13 +7,6 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-*
-
-# Ignore the node_modules directory.
-node_modules
-
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -36,3 +29,6 @@ node_modules
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# .gitignore
+node_modules/
