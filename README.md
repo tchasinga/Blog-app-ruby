@@ -27,7 +27,7 @@
 
 # 📖 Blog App <a name="about-project"></a>
 
-**Blog App** is a web application built using Ruby on Rails and PostgreSQL to manage blog posts, comments, likes, and user profiles.
+**Blog App** is a Web application built using Ruby on Rails and PostgreSQL to manage blog posts, comments, likes, and user profiles.
 
 ## 🛠 Built With <a name="built-with"></a>
 
