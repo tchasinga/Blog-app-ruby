@@ -1,22 +1,29 @@
-default: &default
+development:
   adapter: postgresql
   encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
-development:
-  <<: *default
-  database: blog_app_development
+  database: blogs
+  pool: 5
   username: postgres
-  password: meryem99
+  password: 12345678
+  host: localhost # or specify the hostname where your PostgreSQL server is running
+  port: 5432 # default PostgreSQL port
 
 test:
-  <<: *default
-  database: blog_app_test
+  adapter: postgresql
+  encoding: unicode
+  database: blogs
+  pool: 5
   username: postgres
-  password: meryem99
+  password: 12345678
+  host: localhost
+  port: 5432
 
 production:
-  <<: *default
-  database: blog_app_production
-  username: blog_app
-  password: <%= ENV["BLOG_APP_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  encoding: unicode
+  database: blogs
+  pool: 5
+  username: postgres
+  password: 12345678
+  host: localhost
+  port: 5432

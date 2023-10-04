@@ -4,8 +4,12 @@ one:
   user: one
   post: one
   text: MyText
+  created_at: 2023-09-29 01:09:44
+  updated_at: 2023-09-29 01:09:44
 
 two:
   user: two
   post: two
   text: MyText
+  created_at: 2023-09-29 01:09:44
+  updated_at: 2023-09-29 01:09:44

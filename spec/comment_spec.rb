@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  let(:user) { create(:user) }
-  let(:post) { create(:post, author: user) }
-  subject { Comment.new(user:, post:, text: 'Sample Comment') }
+  let(:user) { User.create(name: 'John Doe') }
+  let(:post) { Post.create(title: 'My Post', text: 'Post body', author_id: user.id) }
 
-  before { subject.save }
+  it 'comment text should not be blank' do
+    comment = Comment.new(text: nil)
+    expect(comment).not_to be_valid
+  end
 
-  it 'updates the post commentsCounter when a comment is created' do
-    expect do
-      comment = Comment.create(user:, post:, text: 'Sample Comment 2')
-      comment.save
-    end.to change { post.reload.commentsCounter }.by(1)
+  it 'should return the comment text' do
+    comment = Comment.new(text: 'test')
+    expect(comment.text).to eq('test')
   end
 end

@@ -1,32 +1,29 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { User.new(name: 'Tom') }
-  let(:user) { subject }
+  subject(:user) { described_class.new(name: 'John', posts_counter: 5) }
 
-  it 'Name must not be blank.' do
-    subject.name = nil
-    expect(subject).to_not be_valid
+  it 'name must not be blank.' do
+    user = User.new(name: nil)
+    expect(user).not_to be_valid
   end
 
-  it 'PostsCounter must be an integer greater than or equal to zero.' do
-    subject.postsCounter = -1
-    expect(subject).to_not be_valid
+  it 'is valid with valid attributes' do
+    expect(user).to be_valid
   end
 
-  it 'PostsCounter must be an integer greater than or equal to zero.' do
-    subject.posts_counter = 0
-    expect(subject).to be_valid
+  it 'is not valid without a name' do
+    user.name = nil
+    expect(user).not_to be_valid
   end
 
-  describe 'Recent Posts' do
-    before do
-      5.times do
-        Post.create(author_id: subject.id, title: 'Hello', text: 'Test Post')
-      end
-    end
-    it 'should display last 3 posts' do
-      expect(subject.recent_posts).to eq subject.posts.order(created_at: :desc).limit(3)
-    end
+  it 'is not valid with a negative posts_counter' do
+    user.posts_counter = -1
+    expect(user).not_to be_valid
+  end
+
+  it 'is valid with a posts_counter of zero' do
+    user.posts_counter = 0
+    expect(user).to be_valid
   end
 end

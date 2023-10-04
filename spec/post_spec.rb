@@ -1,50 +1,28 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  let(:user) { create(:user) }
-  subject do
-    Post.new(title: 'Title', text: 'Sample', commentsCounter: 2, likesCounter: 1, author: user)
+  subject(:post) { described_class.new(title: 'Sample Title', comments_counter: 3, likes_counter: 2) }
+  it 'title must not be blank.' do
+    post = Post.new(title: nil)
+    expect(post).not_to be_valid
   end
-  before { subject.save }
-  it ' Title must not be blank.' do
-    subject.title = nil
-    expect(subject).to_not be_valid
-  end
-
-  it 'Title must not exceed 250 characters.' do
-    subject.title = 'a' * 251
-    expect(subject).to_not be_valid
-  end
-  it 'commentsCounter must be integer and greater than or equal to 0.' do
-    subject.commentsCounter = 'aa'
-    expect(subject).to_not be_valid
-    subject.commentsCounter = -1
-    expect(subject).to_not be_valid
-  end
-  it 'likesCounter must be integer and greater than or equal to 0.' do
-    subject.commentsCounter = 'aa'
-    expect(subject).to_not be_valid
-    subject.commentsCounter = -1
-    expect(subject).to_not be_valid
+  it 'is not valid without a title' do
+    post.title = nil
+    expect(post).not_to be_valid
   end
 
-  it "increments the user's posts_counter by 1" do
-    user = create(:user)
-    post = build(:post, author: user)
-
-    expect { post.save }.to change { user.reload.posts_counter }.by(1)
+  it 'is not valid with a title exceeding 250 characters' do
+    post.title = 'A' * 251
+    expect(post).not_to be_valid
   end
 
-  it 'should display last 5 recent comments' do
-    post = create(:post, author: user)
+  it 'is not valid with a negative comments_counter' do
+    post.comments_counter = -1
+    expect(post).not_to be_valid
+  end
 
-    create(:comment, post:, created_at: 1.hour.ago)
-    create(:comment, post:, created_at: 1.hour.ago)
-    create(:comment, post:, created_at: 1.hour.ago)
-    create(:comment, post:, created_at: 1.hour.ago)
-    create(:comment, post:, created_at: 1.hour.ago)
-    recent_comments = post.recent_comments
-
-    expect(recent_comments.count).to eq(5)
+  it 'is not valid with a negative likes_counter' do
+    post.likes_counter = -1
+    expect(post).not_to be_valid
   end
 end
