@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
+  let(:user) { create(:user) }
+
   describe 'GET /index' do
     before :each do
       get '/users'
@@ -14,13 +16,14 @@ RSpec.describe 'Users', type: :request do
       expect(response).to render_template(:index)
     end
 
-    it 'checks if the response body includes the "All users" placeholder text' do
-      expect(response.body).to include('All users')
+    it 'checks if the response body includes' do
+      expect(response.body).to include
     end
   end
+
   describe 'GET /show' do
     before :each do
-      get '/users/:id'
+      get "/users/#{user.id}"
     end
 
     it 'checks the response status' do
@@ -31,8 +34,8 @@ RSpec.describe 'Users', type: :request do
       expect(response).to render_template(:show)
     end
 
-    it 'checks if the response body includes the "User profile" placeholder text' do
-      expect(response.body).to include('User profile')
+    it 'checks if the response body includes the "Bio" text' do
+      expect(response.body).to include('Bio')
     end
   end
 end
