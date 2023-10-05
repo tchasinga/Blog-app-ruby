@@ -5,7 +5,7 @@
 <p><%= @users[0].bio %></p>
 </div>
 
-<% @posts.each do |post| %>
+<% @user.recent_posts.each do |post| %>
 <ul class="main-container">
     <li class="blog">
     <a href="<%= user_post_path(post.author_id,post.id) %>" class="blog">
@@ -26,3 +26,4 @@
 </button>
 <%end %>
 </div>
+<% @user.recent_posts.each do |post| %>
