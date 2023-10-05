@@ -1,15 +1,92 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+.person {
+  border: 2px solid black;
+  padding: 3%;
+}
+
+.render-container {
+  display: flex;
+  margin: 20px;
+}
+
+.features {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin: 2%;
+}
+
+.features-lastpage {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin: 2%;
+  margin-top: -75px;
+}
+
+.user-container {
+  margin-left: 20px;
+  border: 2px solid black;
+  padding: 3%;
+  width: 100%;
+}
+
+.username {
+  text-decoration: none;
+  color: black;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.username:hover {
+  cursor: pointer;
+}
+
+.user-container p {
+  font-weight: bold;
+  font-size: 13px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bio-container {
+  border: 2px solid black;
+  padding: 10px;
+  margin: 20px;
+}
+
+.main-container {
+  border: 2px solid black;
+  list-style: none;
+  height: 150px;
+  margin: 20px;
+}
+
+.blog {
+  text-decoration: none;
+  color: black;
+}
+
+.see-all {
+  padding: 10px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.see-all a {
+  text-decoration: none;
+  color: black;
+}
+
+.comments {
+  border: 2px solid black;
+  list-style: none;
+  padding: 4%;
+  margin: 20px;
+}
+
+.comment {
+  font-size: 16px;
+}
