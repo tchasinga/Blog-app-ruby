@@ -95,7 +95,11 @@ it will install the required gemfile for running the project
 - Twitter: [@tchasingajacques](https://twitter.com/TchasingaJacque)
 - LinkedIn: [@tchasingajaques](https://www.linkedin.com/in/tchasinga-jacques-76aba7214/)
 
+👤  **Uwimbabazi Dorcas**
 
+- GitHub: [@Dorcas126](https://github.com/Dorcas126)
+- Twitter: [@Dorcasuw](https://twitter.com/Dorcasuwi)
+- LinkedIn: [Uwimbabazi Dorcas](https://www.linkedin.com/in/uwimbabazi-dorcas-956a5a226/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
