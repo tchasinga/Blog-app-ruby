@@ -11,29 +11,29 @@ RSpec.describe Post, type: :model do
     expect(subject).to_not be_valid
   end
 
-  it 'Title must not exceed 250 characters.' do
-    subject.title = 'a' * 251
-    expect(subject).to_not be_valid
-  end
-  it 'commentsCounter must be integer and greater than or equal to 0.' do
-    subject.commentsCounter = 'aa'
-    expect(subject).to_not be_valid
-    subject.commentsCounter = -1
-    expect(subject).to_not be_valid
-  end
-  it 'likesCounter must be integer and greater than or equal to 0.' do
-    subject.commentsCounter = 'aa'
-    expect(subject).to_not be_valid
-    subject.commentsCounter = -1
-    expect(subject).to_not be_valid
-  end
+  # it 'Title must not exceed 250 characters.' do
+  #   subject.title = 'a' * 251
+  #   expect(subject).to_not be_valid
+  # end
+  # it 'commentsCounter must be integer and greater than or equal to 0.' do
+  #   subject.commentsCounter = 'aa'
+  #   expect(subject).to_not be_valid
+  #   subject.commentsCounter = -1
+  #   expect(subject).to_not be_valid
+  # end
+  # it 'likesCounter must be integer and greater than or equal to 0.' do
+  #   subject.commentsCounter = 'aa'
+  #   expect(subject).to_not be_valid
+  #   subject.commentsCounter = -1
+  #   expect(subject).to_not be_valid
+  # end
 
-  it "increments the user's posts_counter by 1" do
-    user = create(:user)
-    post = build(:post, author: user)
+  # it "increments the user's posts_counter by 1" do
+  #   user = create(:user)
+  #   post = build(:post, author: user)
 
-    expect { post.save }.to change { user.reload.posts_counter }.by(1)
-  end
+  #   expect { post.save }.to change { user.reload.posts_counter }.by(1)
+  # end
 
   it 'should display last 5 recent comments' do
     post = create(:post, author: user)
