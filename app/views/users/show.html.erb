@@ -20,7 +20,8 @@
     </ul>
 <% end %>
 
-<% unless @users[0].posts.length <=3 %>
+
+<% unless @users[0].posts.length <=2 %>
 <button class="see-all">
 <a href="<%= user_posts_path(@users[0])%>">See all posts</a>
 </button>
