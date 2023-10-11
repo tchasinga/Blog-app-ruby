@@ -1,0 +1,196 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.user-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-card-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-card {
+  display: flex;
+  margin: 20px auto;
+  width: 80%;
+}
+
+.user-info {
+  margin: 0 10px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.user-info h2 {
+  margin-bottom: 10px;
+  color: black;
+}
+
+.post-counter {
+  text-align: end;
+}
+
+.bio-container {
+  width: 80%;
+  margin: 10px auto;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.bio-container p {
+  font-size: 16px;
+}
+
+.user-photo {
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+}
+
+.post-container {
+  width: 80%;
+  margin: 1.2rem auto 0 auto;
+}
+
+.post-card {
+  border: 1px solid black;
+  margin-bottom: 0.4rem;
+  padding: 10px;
+}
+
+.post-card h2 {
+  margin-bottom: 10px;
+}
+
+.post-card p {
+  margin-bottom: 10px;
+}
+
+.reactions {
+  text-align: end;
+}
+
+.reactions span {
+  margin-right: 10px;
+}
+
+.all-post {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+
+.post-title {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.comment-container {
+  border: 1px solid black;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-container span:nth-child(even) {
+  background-color: rgb(221, 219, 219);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.post-body {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.post-header ul {
+  display: flex;
+}
+
+.post-header li {
+  margin-right: 10px;
+  list-style: none;
+}
+
+.comment-title {
+  margin-bottom: 0.7rem;
+}
+
+.new-post-btn {
+  border: 1px solid black;
+  padding: 5px 10px;
+  border-radius: 8px;
+  margin: 0.5rem 1rem 0.5rem 0;
+  display: inline-block;
+  text-align: center;
+}
+
+.like-comment-container {
+  display: flex;
+  align-items: center;
+}
+
+.post-btn {
+  width: 150px;
+  margin: 0.3rem auto;
+  background-color: black;
+  color: white;
+}
+
+.new-post-section {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-post-container {
+  width: 40%;
+  border: 1px solid black;
+  padding: 20px;
+  margin: 20px auto;
+}
+
+.new-post-container form {
+  margin: 0.3rem auto;
+}
+
+.text-container {
+  display: flex;
+  align-items: center;
+}
+
+.new-post-container h1 {
+  color: whitesmoke;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#post_title,
+#post_text,
+#comment_text {
+  margin: 0.5rem;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+}
+
+.submit-btn {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
