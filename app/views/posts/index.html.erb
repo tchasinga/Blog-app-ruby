@@ -1,26 +1,31 @@
-<%= render partial: "partials/user", locals: {user: @user} %>
+<%= render "shared/user", user: @user %>
 
-<section class="posts-section">
-  <h2> Num of Posts</h2>
-  <div class="posts-container">
-    <ul class="posts-list">
-    <% @posts.each do |post| %>
-      <div class="post">
-      <%= render partial: "partials/post", locals: {post: post} %>
-      <h4>Comments: </h4>
-      <ul class="comments-list">
-        <% post.recent_comments.each do |comment| %> 
-          <li>
-          <%= render partial: "partials/comment", locals: {comment: comment} %>
-          </li>
-        <% end %>
-      </ul>
-      <%= render partial: "partials/comment_form", locals: {post: post, author: @recent_user, user_id: @user.id} %>
-      </div>
-    <% end %>
-    </ul>
-    <%= link_to new_user_post_path(@user.id) do %>
-      <button>Create new Post</button>
-      <% end %>
+<div class="row mb-2">
+  <% if @posts.any? %>
+  <% @posts.includes(:user ,comments: :user).each_with_index do |post, index| %>
+    <div class="col-md-6">
+      <a href="<%= user_post_path(@user, post)%>?index=<%= index + 1 %>" class="text-decoration-none">
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <%= render "shared/post", post: post, post_index: index + 1 %>
+            <a href="<%= user_post_path(@user, post)%>?index=<%= index + 1 %>" class="stretched-link">Continue reading</a>
+          </div>
+        </div>
+      </a>
+    </div>
+  <% end %>
+  <% else %>
+    <p>No posts yet</p>
+  <% end %>
+</div>
+
+
+ 
+<div class="row justify-content-center align-items-center my-1">
+
+  <div class=" col-2">
+    <%= will_paginate @posts %>
   </div>
-</section>
+
+</div>
+

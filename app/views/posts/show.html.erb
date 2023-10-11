@@ -1,26 +1,34 @@
-<article>
-  <section class="main-post">
-    <div>
-    <h1><%= @post.title %> by <%= User.find(@post.author_id).name %></h1>
-    <div class="post-counters">
-      <span>Likes: <%= @post.likes_counter%></span>
-      <span>Comments: <%= @post.comments_counter%></span>
+<div class="row mb-2">
+    <div class="col-md-12">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">Created by <%=  @post.user.name %></strong>
+          <h3 class="mb-0"><%= @post.title %></h3>
+          <div class="mb-1 text-muted my-2"><p><%= @post.created_at.strftime('%d %B %Y') %></p></div>
+          <p class="card-text mb-auto"><p><%= @post.text %></p></p>
+          <%= render 'shared/like_form', post: @post, user: @user %>
+        </div>
+      </div>
     </div>
-    </div>
-    <p><%= @post.text %></p>
-    <%= render partial: "partials/like_form", locals: {author_id: @post.author_id, post_id: @post.id} %>
-  </section>
-
-  <section class="comments-section">
-  <h2>Comments: </h2>
-  <ul class="comments-list">
-  <% @comments.each do |comment| %>
-    <li>
-    <%= render partial: "partials/comment", locals: {comment: comment} %>
-    </li>
-  <% end %>
-  </ul>
-
-  <%= render partial: "partials/comment_form", locals: {post: @post, author: @recent_user, user_id: @post.author_id} %>
-  </section>
-</article>
+  </div>
+<div class="row">
+  <div class="col-lg-12">
+    <%= render 'shared/comment_form', post: @post, user: @user %>
+    <ul class="list-group my-3">
+      <% if @post.comments.any? %>
+        <% @post.comments.each do |comment| %>
+          <% if comment.user %>
+            <li class="list-group-item d-flex justify-content-between">
+              <p><%= comment.user.name %>: <%= comment.text %></p>
+              <p>Date: <%= comment.created_at.strftime('%d %B %Y') %></p>
+            </li>
+          <% end %>
+        <% end %>
+      <% else %>
+        <li class="list-group-item">No comments yet</li>
+      <% end %>
+    </ul>
+   
+  </div>
+ 
+</div>

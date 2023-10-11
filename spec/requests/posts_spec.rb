@@ -1,42 +1,47 @@
 require 'rails_helper'
 
 RSpec.describe 'Posts', type: :request do
-  let(:user) { create(:user) }
+  let(:valid_attributes) do
+    {
+      name: 'Mark'
+    }
+  end
 
   describe 'GET /index' do
     before :each do
-      get "/users/#{user.id}/posts"
+      @user = User.create! valid_attributes
+      get user_posts_path(@user)
+    end
+    it 'returns a successful response' do
+      expect(response).to be_successful
     end
 
-    it 'checks the response status' do
-      expect(response).to have_http_status(:success)
-    end
-
-    it 'checks if the index template is rendered' do
+    it 'renders the index template' do
       expect(response).to render_template(:index)
     end
 
-    it 'checks if the response body includes the "Number of posts:" text' do
-      expect(response.body).to include('Number of posts:')
+    it 'includes correct placeholder text in the response body' do
+      expect(response.body).to include('Number of posts')
     end
   end
 
   describe 'GET /show' do
-    let(:post) { create(:post, author: user) }
     before :each do
-      get "/users/#{user.id}/posts/#{post.id}"
+      @user = User.create! valid_attributes
+      @post = @user.posts.create(title: 'Test post')
+      get user_post_path(@user, @post)
     end
 
-    it 'checks the response status' do
-      expect(response).to have_http_status(:success)
+    it 'returns a successful response' do
+      expect(response).to be_successful
     end
 
-    it 'checks if the show template is rendered' do
+    it 'renders correct template' do
       expect(response).to render_template(:show)
     end
 
-    it 'checks if the response body includes the "Comments:" text' do
-      expect(response.body).to include('Comments:')
+    it 'includes correct placeholder text in the response body' do
+      expect(response.body).to include('Comments')
     end
   end
 end

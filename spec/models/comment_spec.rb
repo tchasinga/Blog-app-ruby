@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  @user = User.new(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
-  subject { Comment.new(text: 'hello man') }
+  it 'update comments_counter of post' do
+    user = User.new(name: 'Mark')
+    post = Post.create(title: 'Test Post', user:, text: 'Hi Tom!')
+    Comment.create(post:, user:, text: 'Hi Tom!')
+    Comment.create(post:, user:, text: 'Hi Tom!')
+    Comment.create(post:, user:, text: 'Hi Tom!')
+    Comment.create(post:, user:, text: 'Hi Tom!')
 
-  before { subject.save }
-
-  it 'comments should be not be Valid' do
-    subject.text = nil
-    expect(subject).to_not be_valid
+    expect(post.comments_counter).to equal(4)
   end
 end

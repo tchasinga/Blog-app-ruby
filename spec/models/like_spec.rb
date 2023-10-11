@@ -1,9 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  describe 'methods' do
-    let(:user) { FactoryBot.create(:user) }
-    let(:post) { FactoryBot.create(:post) }
-    let(:like) { Like.new(author: user, post:) }
+  it 'update likes_counter of post' do
+    user = User.new(name: 'Mark')
+    post = Post.create(title: 'Test Post', user:)
+    Like.create(post:, user:)
+    Like.create(post:, user:)
+    Like.create(post:, user:)
+    Like.create(post:, user:)
+
+    expect(post.likes_counter).to equal(4)
   end
 end
