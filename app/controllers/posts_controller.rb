@@ -1,13 +1,12 @@
 class PostsController < ApplicationController
   def index
-    @users = [User.includes(:posts).find(params[:user_id])]
-    @posts = @users[0].posts.includes(:comments)
+    @user = User.find(params[:user_id])
+    @posts = @user.posts.includes(:comments)
   end
 
   def show
-    @posts = [Post.find(params[:id])]
-    @comment = Comment.new
-    @like = Like.new
+    @post = Post.find(params[:id])
+    @count = @post.comment_counter
   end
 
   def new
@@ -15,11 +14,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.new(post_params)
+    @post = Post.new(post_params)
+    @post.author = current_user
+
     if @post.save
-      redirect_to user_posts_path(current_user)
+      redirect_to user_posts_path(id: current_user.id)
     else
-      render 'new'
+      render :new, alert: 'Cannot create a new post'
     end
   end
 
