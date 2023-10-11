@@ -1,29 +1,20 @@
-<div>
-<%= render partial: "render", users: @users%>
-<div class="bio-container">
-<h2>Bio</h2>
-<p><%= @users[0].bio %></p>
-</div>
+<%= render partial: "partials/user", locals: {user: @user} %>
 
-<% @posts.each do |post| %>
-<ul class="main-container">
-    <li class="blog">
-    <a href="<%= user_post_path(post.author_id,post.id) %>" class="blog">
-    <h2><%= post.title %></h2>
-    <p><%= post.text %><p>
-    <div class="features">
-    <span>Comments: <%= post.comments.count %></span>
-    <span>Likes: <%= post.likes.count %></span>
-    </div>
-    </a>
-    </li>
+<section class="bio-section">
+  <h2>Bio</h2>
+  <p><%= @user.bio %></p>
+</section>
+
+<section class="posts-section">
+  <h2>Num of Posts</h2>
+  <div class="posts-container">
+    <ul class="posts-list">
+    <% @posts.each do |post| %>
+      <%= render partial: "partials/post", locals: {post: post} %>
+    <% end %>
     </ul>
-<% end %>
-
-
-<% unless @users[0].posts.length <=2 %>
-<button class="see-all">
-<a href="<%= user_posts_path(@users[0])%>">See all posts</a>
-</button>
-<%end %>
-</div>
+  </div>
+  <%= link_to user_posts_path(@user.id) do %>
+    <button>Show all posts</button>
+  <% end %>
+</section>

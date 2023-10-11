@@ -1,27 +1,26 @@
-<%= render partial: "users/render", users: @users%>
+<%= render partial: "partials/user", locals: {user: @user} %>
 
-<% @posts.each do |post| %>
-<ul class="main-container">
- <li class="blog">
-      <a href="<%= user_post_path(post.author_id, post.id) %>" class="blog">
-        <h2><%= post.title %></h2>
-        <p><%= post.text %></p>
-        <div class="features">
-        <span>Comments: <%= post.comments.length %></span>
-        <span>Likes: <%= post.likes.length %></span>
-        </div>
-      </a>
-    </li>
+<section class="posts-section">
+  <h2> Num of Posts</h2>
+  <div class="posts-container">
+    <ul class="posts-list">
+    <% @posts.each do |post| %>
+      <div class="post">
+      <%= render partial: "partials/post", locals: {post: post} %>
+      <h4>Comments: </h4>
+      <ul class="comments-list">
+        <% post.recent_comments.each do |comment| %> 
+          <li>
+          <%= render partial: "partials/comment", locals: {comment: comment} %>
+          </li>
+        <% end %>
+      </ul>
+      <%= render partial: "partials/comment_form", locals: {post: post, author: @recent_user, user_id: @user.id} %>
+      </div>
+    <% end %>
     </ul>
-    <ul class="comments">
-      <% unless post.comments.any? %>
-        <h2 class="comment">There are no comments to show.</h2>
+    <%= link_to new_user_post_path(@user.id) do %>
+      <button>Create new Post</button>
       <% end %>
-      <% post.recent_comments.each do |comment| %>
-        <li >
-          <span><%= User.find(comment.user_id).name %>:</span>
-          <span><%= comment.text %></span>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
+  </div>
+</section>

@@ -1,13 +1,18 @@
 class PostsController < ApplicationController
   def index
-    @users = [User.includes(:posts).find(params[:user_id])]
-    @posts = @users[0].posts.includes(:comments)
+    user_id = params[:user_id]
+    @user = User.includes(posts: { comments: [:author] }).find(user_id)
+    @posts = @user.posts
+    @recent_user = current_user
   end
 
   def show
-    @posts = [Post.find(params[:id])]
-    @comment = Comment.new
-    @like = Like.new
+    user_id = params[:user_id]
+    post_id = params[:id]
+    @user = User.find(user_id)
+    @post = Post.find(post_id)
+    @comments = Comment.where(post_id:)
+    @recent_user = current_user
   end
 
   def new
@@ -15,17 +20,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.new(post_params)
-    if @post.save
-      redirect_to user_posts_path(current_user)
-    else
-      render 'new'
-    end
-  end
+    user = current_user
+    @post = Post.new(
+      title: params[:post][:title],
+      text: params[:post][:text],
+      author: user
+    )
+    return unless @post.save
 
-  private
-
-  def post_params
-    params.require(:post).permit(:title, :text)
+    redirect_to user_posts_path
   end
 end

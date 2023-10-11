@@ -3,9 +3,9 @@
 one:
   user: one
   post: one
-  text: MyText
+  text: MyString
 
 two:
   user: two
   post: two
-  text: MyText
+  text: MyString

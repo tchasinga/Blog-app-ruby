@@ -5,18 +5,18 @@ default: &default
 
 development:
   <<: *default
-  database: blog_app_development
+  database: blog_app_rails_development
   username: postgres
-  password: meryem99
+  password: 1d2@Dorcas
 
 test:
   <<: *default
-  database: blog_app_test
+  database: blog_app_rails_test
   username: postgres
-  password: meryem99
+  password: 1d2@Dorcas
 
 production:
   <<: *default
-  database: blog_app_production
-  username: blog_app
-  password: <%= ENV["BLOG_APP_DATABASE_PASSWORD"] %>
+  database: blog_app_rails_production
+  username: blog_app_rails
+  password: <%= ENV["BLOG_APP_RAILS_DATABASE_PASSWORD"] %>

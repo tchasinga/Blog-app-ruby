@@ -1,92 +1,125 @@
-.person {
-  border: 2px solid black;
-  padding: 3%;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
 }
 
-.render-container {
+img {
+  width: 150px;
+  height: auto;
+}
+
+body {
+  padding: 49px;
   display: flex;
-  margin: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
 }
 
-.features {
-  display: flex;
-  gap: 8px;
-  justify-content: flex-end;
-  margin: 2%;
-}
-
-.features-lastpage {
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-  margin: 2%;
-  margin-top: -75px;
-}
-
-.user-container {
-  margin-left: 20px;
-  border: 2px solid black;
-  padding: 3%;
-  width: 100%;
-}
-
-.username {
-  text-decoration: none;
-  color: black;
-  font-size: 36px;
-  font-weight: bold;
-}
-
-.username:hover {
+button {
+  padding: 10px;
+  border: none;
   cursor: pointer;
 }
 
-.user-container p {
-  font-weight: bold;
-  font-size: 13px;
+/* USERS PAGE */
+.users-list {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.bio-container {
-  border: 2px solid black;
-  padding: 10px;
-  margin: 20px;
+.user-card,
+.bio-section,
+.posts-section,
+article {
+  padding: 20px;
 }
 
-.main-container {
-  border: 2px solid black;
-  list-style: none;
-  height: 150px;
-  margin: 20px;
-}
-
-.blog {
-  text-decoration: none;
-  color: black;
-}
-
-.see-all {
-  padding: 10px;
-  background-color: white;
+.user-card {
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin: auto;
+  gap: 20px;
 }
 
-.see-all a {
-  text-decoration: none;
-  color: black;
+.profile-picture {
+  width: 150px;
+  height: 100px;
 }
 
-.comments {
-  border: 2px solid black;
-  list-style: none;
-  padding: 4%;
-  margin: 20px;
+.user-info {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
-.comment {
-  font-size: 16px;
+.bio-section,
+.posts-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.posts-list,
+.posts-container,
+.comments-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.post-counters {
+  width: fit-content;
+  align-self: flex-end;
+  font-weight: 700;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.comment-author {
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.main-post {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.main-post > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+textarea,
+input {
+  border: 1px solid rgb(168, 158, 250);
+  padding: 10px;
+  width: 100%;
 }

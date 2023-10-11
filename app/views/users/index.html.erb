@@ -1,3 +1,8 @@
 <div>
-<%= render partial: "render", users: @users%>
+<ul class="users-list">
+<% @users.each do |user| %>
+  <%= render partial: "partials/user", locals: {user: user} %>
+<% end %>
+</ul
+</ul>
 </div>
