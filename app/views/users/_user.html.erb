@@ -1,11 +1,40 @@
-<%= link_to user do %>
-  <li class="user-card p-5 flex items-center justify-center bg-blue-100 rounded-lg shadow-md hover:shadow-lg">
-    <div class="user-img mr-4">
-      <img src="<%= user.photo %>" alt="<%= user.name %>'s Photo" class="user-photo rounded-full w-20 h-20">
-    </div>
-    <div class="user-info bg-gray-200 border-2 border-gray-300 rounded-md p-4 hover:bg-gray-300 transition duration-300 ease-in-out">
-      <h2 class="font-bold text-xl text-gray-800"><%= user.name %></h2>
-      <p class="post-counter font-semibold text-sm text-gray-500">Number of posts: <%= user.post_counter %></p>
-    </div>
-  </li>
-<% end %>
+<div id="<%= dom_id user %>" >
+
+  <div class="user_item" >
+    <p>
+    <% if !user.photo.strip.empty? %>
+      <img src="<%= user.photo %>" class="user_photo" alt="<%= user.photo %>" />
+    <% else %>
+      <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" class="user_photo" alt="user avatar" />
+    <% end %>
+    </p>
+    
+    
+    <p>
+      <strong>Name:</strong>
+      <%= user.name %>
+    </p>
+
+
+    <p>
+      <strong>Posts counter:</strong>
+      <%= user.posts_counter %>
+    </p>
+
+  </div>
+
+
+  <% if !@posts.nil? && !url_for.include?('post') %>
+    <p class="bio">
+      <strong><%= user.name%>'s Bio:</strong>
+      <%= "#{user.bio}. " * 3 %>
+    </p>
+
+    
+    <%= render user.recent_posts(3)  %>
+    
+  <% end %>
+  
+</div>
+
+  

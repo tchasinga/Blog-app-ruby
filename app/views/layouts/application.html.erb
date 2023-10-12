@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blog</title>
+    <title>BlogApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta >
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <script src="https://cdn.tailwindcss.com"></script>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    
   </head>
 
   <body>
-    <div class='header-naviagation'>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    
+    <header class='navigation'>
       <%= link_to 'Sign Up', new_user_registration_path  %>
-    </div>
+
+      <%= link_to 'Home', '/'  %>
+
+      <% if user_signed_in?  %>
+          <%= link_to 'Log Out', destroy_user_session_path  %>
+          <%= link_to 'Reset Password', edit_user_registration_path  %>
+
+        
+        <strong>
+          <%= current_user.name %>
+        </strong>
+      <% else %>
+          <%= link_to 'Log In', new_user_session_path  %>
+
+      <% end %>
+    </header>
+
     <%= yield %>
   </body>
 </html>
