@@ -1,34 +1,12 @@
-<div class="post-container w-[60%] mx-auto bg-white rounded-md shadow-md p-6 my-8">
-    <div class="post-header flex justify-between items-center mb-4">
-        <div>
-            <h1 class="font-semibold text-2xl mb-2"><%= @post.title %> By <span><%= @post.author.name %></span></h1>
-            <ul class="flex space-x-4 text-sm">
-                <li class="font-semibold">Comments: <%= @post.comment_counter %> </li>
-                <li class="font-semibold">Likes: <%= @post.like_counter %> </li>
-            </ul>
-        </div>
-    </div>
+<p style="color: green"><%= notice %></p>
 
-    <div class="post-body bg-gray-200 border-2 my-5 rounded-md p-4 hover:bg-gray-300 transition duration-300 ease-in-out">
-        <%=@post.text%>
-    </div>
+All Comments
+<%= render @post %>
 
-    <h4 class="comment-title font-semibold text-lg mb-2">Comments: <%=@count%></h4>
 
-    <div class="comment-container border-2 rounded-md p-4">
-        <% @post.comments.each do |comment| %>
-            <div class="mb-2">
-                <span class="font-semibold"><%= comment.author.name %>:</span>
-                <span class="font-normal"><%= comment.text %></span>
-            </div>
-        <% end %>
-    </div>
-
-    <div class="like-comment-container flex justify-between mt-4">
-        <%= form_with model: @like, url: user_post_likes_path(post_id: @post.id) do |l| %>
-            <%= l.submit "Like", class: "bg-black text-white border-2 px-3 py-1 rounded-md hover:text-white hover:font-semibold"%>
-        <% end %>
-
-        <%= link_to "Add a comment", new_user_post_comment_path(user_id: @post.author.id, post_id: @post.id), class: 'bg-black text-white border-2 px-3 py-1 rounded-md hover:text-white hover:font-semibold'%>
-    </div>
+<div class="bottom">
+  <strong>
+  <%= link_to "Back to posts", "/users/#{@user.id}/posts" %>
+  </strong>
+  <%# <%= button_to "Destroy this post", @post, method: :delete %>
 </div>

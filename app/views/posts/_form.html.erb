@@ -1,0 +1,16 @@
+<%= form_with model: post, url: post_create_path(id: current_user.id), method: 'post', local: true, scope: :post do |form| %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :text, style: "display: block" %>
+    <%= form.text_area :text, required: true %>
+  </div>
+
+  <div>
+    <%= form.submit "Add" %>
+  </div>
+<% end %>

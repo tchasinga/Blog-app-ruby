@@ -1,196 +1,129 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+:root {
+  --total_padding: 1rem 10rem;
+
+  @media screen and (max-width: 768px) {
+    --total_padding: 1rem 1rem;
+  }
+}
+
+*:not(h2, h3) {
   padding: 0;
+  margin: 0;
+  text-align: left;
+  font-size: 15px;
+}
+
+body {
+  padding: var(--total_padding);
+}
+
+.user_photo {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+}
+
+a {
   text-decoration: none;
-}
-
-.user-title {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.user-card-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.user-card {
-  display: flex;
-  margin: 20px auto;
-  width: 80%;
-}
-
-.user-info {
-  margin: 0 10px;
-  border: 1px solid black;
-  padding: 10px;
-}
-
-.user-info h2 {
-  margin-bottom: 10px;
   color: black;
 }
 
-.post-counter {
-  text-align: end;
+p {
+  text-align: left;
 }
 
-.bio-container {
-  width: 80%;
-  margin: 10px auto;
-  border: 1px solid black;
-  padding: 10px;
+.user_item {
+  margin-top: 1rem;
+  border: 1px solid green;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  align-items: center;
+  height: 10rem;
 }
 
-.bio-container p {
-  font-size: 16px;
+.bio {
+  border: 1px solid green;
+  padding: 1rem;
+  margin-top: 1rem;
 }
 
-.user-photo {
-  object-fit: cover;
-  width: 100px;
-  height: 100px;
+.post-item {
+  margin-top: 1rem;
+  border: 0.1rem solid olivedrab;
+  padding: 1rem;
 }
 
-.post-container {
-  width: 80%;
-  margin: 1.2rem auto 0 auto;
+.comment-like-bottom {
+  margin-top: 1rem;
+  text-align: right;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: flex-end;
 }
 
-.post-card {
-  border: 1px solid black;
-  margin-bottom: 0.4rem;
-  padding: 10px;
-}
-
-.post-card h2 {
-  margin-bottom: 10px;
-}
-
-.post-card p {
-  margin-bottom: 10px;
-}
-
-.reactions {
-  text-align: end;
-}
-
-.reactions span {
-  margin-right: 10px;
-}
-
-.all-post {
-  text-align: center;
-  display: inline-block;
+.bottom {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
   width: 100%;
-}
-
-.post-title {
-  text-align: center;
-  margin: 10px 0;
-}
-
-.comment-container {
-  border: 1px solid black;
-  margin: 10px 0;
+  height: 5rem;
   display: flex;
   flex-direction: column;
-}
-
-.comment-container span:nth-child(even) {
-  background-color: rgb(221, 219, 219);
-}
-
-.post-header {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-}
-
-.post-body {
-  border: 1px solid black;
-  padding: 10px;
-}
-
-.post-header ul {
-  display: flex;
-}
-
-.post-header li {
-  margin-right: 10px;
-  list-style: none;
-}
-
-.comment-title {
-  margin-bottom: 0.7rem;
-}
-
-.new-post-btn {
-  border: 1px solid black;
-  padding: 5px 10px;
-  border-radius: 8px;
-  margin: 0.5rem 1rem 0.5rem 0;
-  display: inline-block;
-  text-align: center;
-}
-
-.like-comment-container {
-  display: flex;
-  align-items: center;
-}
-
-.post-btn {
-  width: 150px;
-  margin: 0.3rem auto;
-  background-color: black;
-  color: white;
-}
-
-.new-post-section {
-  height: 60vh;
-  display: flex;
+  gap: 1rem;
   justify-content: center;
-  align-items: center;
 }
 
-.new-post-container {
-  width: 40%;
-  border: 1px solid black;
-  padding: 20px;
-  margin: 20px auto;
+.comments-container {
+  margin-top: 0.2rem;
+  padding-top: 0.2rem;
 }
 
-.new-post-container form {
-  margin: 0.3rem auto;
+.comment-item {
+  border-bottom: 0.1rem dashed rgb(225, 225, 225);
+  padding-top: 0.2rem;
 }
 
-.text-container {
+.comment-item:first-child {
+  border: 0.1rem solid greenyellow;
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  gap: 1rem;
 }
 
-.new-post-container h1 {
-  color: whitesmoke;
-  margin-bottom: 1rem;
+.form {
+  margin: 1rem 0;
+}
+
+.link-btn {
+  border: 0.1rem solid black;
+  padding: 0.2rem 1rem;
   text-align: center;
-}
-
-#post_title,
-#post_text,
-#comment_text {
-  margin: 0.5rem;
-  border-radius: 10px;
-  padding: 10px;
-  width: 100%;
-}
-
-.submit-btn {
-  background-color: black;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
+  border-radius: 1rem;
+  font-weight: bold;
   cursor: pointer;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+  gap: 1rem;
 }
