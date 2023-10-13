@@ -4,6 +4,11 @@ class UsersController < ApplicationController
     @users = User.all.order(created_at: 'desc')
   end
 
+  def index_api
+    @users = User.all.order(created_at: 'desc')
+    render json: @users
+  end
+
   # new_user_registration GET    /users/sign_up(.:format)
   def new; end
 
@@ -15,8 +20,8 @@ class UsersController < ApplicationController
     @posts = @user.posts
   end
 
-  def sign_out
-    reset_session
+  def user_sign_out
+    sign_out(current_user)
     redirect_to '/'
   end
 end
