@@ -1,22 +1,10 @@
 class UsersController < ApplicationController
-  # GET /users or /users.json
   def index
-    @users = User.all.order(created_at: 'desc')
+    @users = User.all
   end
 
-  # new_user_registration GET    /users/sign_up(.:format)
-  def new; end
-
-  def confirmation; end
-
-  # GET /users/1 or /users/1.json
   def show
-    @user = User.find(params[:id])
-    @posts = @user.posts
-  end
-
-  def sign_out
-    reset_session
-    redirect_to '/'
+    @users = [User.includes(:posts).find(params[:id])]
+    @posts = @users[0].recent_posts
   end
 end

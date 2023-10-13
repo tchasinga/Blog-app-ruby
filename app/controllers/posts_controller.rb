@@ -1,51 +1,42 @@
 class PostsController < ApplicationController
   load_and_authorize_resource
-
-  # before_action :authenticate_user!, only: %i[create destroy]
-
-  before_action :set_user, only: %i[show index destroy]
-  before_action :set_post, only: %i[show destroy]
-
-  # # GET /posts or /posts.json
   def index
-    @posts = @user.posts.includes(:comments).order(created_at: 'desc')
+    @users = [User.includes(:posts).find(params[:user_id])]
+    @posts = @users[0].posts.includes(:comments)
   end
 
-  # # GET /posts/1 or /posts/1.json
-  def show; end
+  def show
+    @posts = [Post.find(params[:id])]
+    @user = @posts[0].author
+    @comment = Comment.new
+    @like = Like.new
+  end
 
-  def new; end
+  def new
+    @post = Post.new
+  end
 
   def create
-    @new_post = Post.new(post_params)
-    @new_post.author_id = current_user.id
-
-    if @new_post.save
-      flash[:success] = 'Post created successfully!'
-      redirect_to "/users/#{@new_post.author_id}"
+    @post = current_user.posts.new(post_params)
+    if @post.save
+      redirect_to user_posts_path(current_user)
     else
-      render :new, alert: 'Failed to like the post.'
+      render 'new'
     end
   end
 
   def destroy
-    selected_post = Post.find(params[:id])
-    return unless selected_post.destroy
-
-    flash[:notice] = 'Post deleted successfully'
-    redirect_to request.referer
+    @post = Post.find(params[:id])
+    authorize! :destroy, @post
+    if @post.destroy
+      flash.now[:success] = 'Post was successfully destroyed!'
+    else
+      flash[:error] = 'Post couldnt be destroyed!'
+    end
+    redirect_to user_posts_path
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_user
-    @user = User.find(params[:user_id])
-  end
-
-  def set_post
-    @post = Post.find(params[:id])
-  end
 
   def post_params
     params.require(:post).permit(:title, :text)

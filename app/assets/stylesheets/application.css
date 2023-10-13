@@ -1,129 +1,155 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-
-:root {
-  --total_padding: 1rem 10rem;
-
-  @media screen and (max-width: 768px) {
-    --total_padding: 1rem 1rem;
-  }
+.person {
+  border: 2px solid black;
+  padding: 3%;
 }
 
-*:not(h2, h3) {
-  padding: 0;
-  margin: 0;
-  text-align: left;
-  font-size: 15px;
+.render-container {
+  display: flex;
+  margin: 20px;
 }
 
-body {
-  padding: var(--total_padding);
+.features {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin: 2%;
 }
 
-.user_photo {
-  width: 10rem;
-  height: 10rem;
-  object-fit: cover;
+.features-lastpage {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin: 2%;
+  margin-top: -75px;
 }
 
-a {
+.user-container {
+  margin-left: 20px;
+  border: 2px solid black;
+  padding: 3%;
+  width: 100%;
+}
+
+.username {
+  text-decoration: none;
+  color: black;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.username:hover {
+  cursor: pointer;
+}
+
+.user-container p {
+  font-weight: bold;
+  font-size: 13px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bio-container {
+  border: 2px solid black;
+  padding: 10px;
+  margin: 20px;
+}
+
+.main-container {
+  border: 2px solid black;
+  list-style: none;
+  height: 150px;
+  margin: 20px;
+}
+
+.blog {
   text-decoration: none;
   color: black;
 }
 
-p {
-  text-align: left;
-}
-
-.user_item {
-  margin-top: 1rem;
-  border: 1px solid green;
-  display: grid;
-  grid-template-columns: 1fr 2fr 2fr;
-  align-items: center;
-  height: 10rem;
-}
-
-.bio {
-  border: 1px solid green;
-  padding: 1rem;
-  margin-top: 1rem;
-}
-
-.post-item {
-  margin-top: 1rem;
-  border: 0.1rem solid olivedrab;
-  padding: 1rem;
-}
-
-.comment-like-bottom {
-  margin-top: 1rem;
-  text-align: right;
+.see-all {
+  padding: 10px;
+  background-color: white;
   display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
 
-.bottom {
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-  width: 100%;
-  height: 5rem;
+.see-all a {
+  text-decoration: none;
+  color: black;
+}
+
+.comments {
+  border: 2px solid black;
+  list-style: none;
+  padding: 4%;
+  margin: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  justify-content: center;
+  gap: 20px;
 }
 
-.comments-container {
-  margin-top: 0.2rem;
-  padding-top: 0.2rem;
-}
-
-.comment-item {
-  border-bottom: 0.1rem dashed rgb(225, 225, 225);
-  padding-top: 0.2rem;
-}
-
-.comment-item:first-child {
-  border: 0.1rem solid greenyellow;
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-}
-
-.form {
-  margin: 1rem 0;
-}
-
-.link-btn {
-  border: 0.1rem solid black;
-  padding: 0.2rem 1rem;
-  text-align: center;
-  border-radius: 1rem;
-  font-weight: bold;
+.delete-comment-btn {
+  border: none;
+  background-color: #d91717;
+  color: white;
+  padding: 4px;
   cursor: pointer;
+  font-size: 14px;
 }
 
-.navigation {
+.comment {
+  font-size: 16px;
+}
+
+.container {
   display: flex;
-  flex-direction: row;
-  justify-content: right;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 1rem;
+  width: 100%;
+}
+
+.field {
+  width: 300px;
+  margin: 15px 1px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+}
+
+.submit {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  background-color: white;
+  -webkit-box-shadow: 3px 4px 5px 1px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 3px 4px 5px 1px rgba(0, 0, 0, 1);
+  box-shadow: 3px 4px 5px 1px rgba(0, 0, 0, 1);
+}
+
+.links-container {
+  width: 400px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.delete-btn {
+  border: none;
+  background-color: #d91717;
+  color: white;
+  padding: 8px;
+  margin-right: 3%;
+  cursor: pointer;
+  font-size: 14px;
 }

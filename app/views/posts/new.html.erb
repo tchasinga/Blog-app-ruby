@@ -1,9 +1,10 @@
-<h1>New post</h1>
-
-<%= render "form", post: @post %>
-
-<br>
-
-<div>
-  <%= link_to "Back to users", users_path %>
-</div>
+<h1>Add new Post</h1>
+<%= form_with model: @post, url: user_posts_path do |f| %>
+   <div class="add-post">
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title %>
+    <%= f.label :text, "Post" %>
+    <%= f.text_area :text %>
+    <%= f.submit "Add Post"%>
+    </div>
+<% end %>
