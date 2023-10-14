@@ -1,25 +1,27 @@
 class ApplicationController < ActionController::Base
-  include JwtApi
-
-  before_action :authenticate_request, only: %i[login]
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_default_response_format, if: :api_request?
 
-  private
-
-  def authenticate_request
-    header = request.headers['Authorization']
-    header = header.split.last if header
-    decoded = jwt_decode(header)
-    @current_user = User.find(decoded[:user_id])
+  def after_sign_in_path_for(_resource)
+    users_url
   end
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.permit(:role, :name, :bio, :photo, :email, :password, :current_password)
-    end
+  protected
 
-    devise_parameter_sanitizer.permit(:account_update) do |u|
-      u.permit(:role, :name, :bio, :photo, :email, :password, :current_password)
-    end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(
+      :sign_up, keys: %i[name bio email photo password confirm_password]
+    )
+    devise_parameter_sanitizer.permit(
+      :sign_in, keys: %i[email password]
+    )
+  end
+
+  def set_default_response_format
+    request.format = :json
+  end
+
+  def api_request?
+    request.path.start_with?('/api/')
   end
 end

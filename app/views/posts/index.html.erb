@@ -1,25 +1,27 @@
-<p style="color: green"><%= notice %></p>
+<%= render partial: "users/render", users: @users%>
 
-<h1>Recent Comments</h1>
-<h2>
-  <%= link_to 'Home', users_path %>
-</h2>
-
-
-<div id="posts">
-  
-  <%= render @user %>
-
-  <% @posts.each do |post| %>
-      
-      <%= render "post", post: post %>
-    
+<% @posts.each do |post| %>
+<ul class="main-container">
+ <li class="blog">
+      <a href="<%= user_post_path(post.author_id, post.id) %>" class="blog">
+        <h2><%= post.title %></h2>
+        <p><%= post.text %></p>
+        <div class="features">
+        <span>Comments: <%= post.comments.length %></span>
+        <span>Likes: <%= post.likes.length %></span>
+        </div>
+      </a>
+    </li>
+    </ul>
+    <ul class="comments">
+      <% unless post.comments.any? %>
+        <h2 class="comment">There are no comments to show.</h2>
+      <% end %>
+      <% post.recent_comments.each do |comment| %>
+        <li >
+          <span><%= User.find(comment.user_id).name %>:</span>
+          <span><%= comment.text %></span>
+        </li>
+      <% end %>
+    </ul>
   <% end %>
-</div>
-
-<div class="bottom">
-  <strong>
-  <%= link_to "Back to all posts", "/users/#{@user.id}" %>
-  </strong>
-</div>
-<%# <%= link_to "New post", new_post_path %>

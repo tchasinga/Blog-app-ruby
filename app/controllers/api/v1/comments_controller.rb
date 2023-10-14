@@ -1,31 +1,28 @@
 class Api::V1::CommentsController < ApplicationController
-  load_and_authorize_resource except: %i[create]
+  before_action :find_post, only: %i[index create]
   skip_before_action :verify_authenticity_token
 
   def index
-    @post = Post.find(params[:post_id])
     @comments = @post.comments
-    render json: {
-      success: true,
-      data: {
-        post: @post,
-        comments: @comments
-      }
-    }
+    render json: @comments
   end
 
   def create
-    @current_user = User.find(params[:user_id])
-    @post = Post.find(params[:post_id])
-
-    @comment = Comment.new(text: params[:text])
-    @comment.user_id = @current_user.id
-    @comment.post_id = @post.id
-
+    @comment = Comment.new(comment_params)
     if @comment.save
-      render json: { success: true, data: { comment: @comment, user: @current_user } }, status: :created
+      render json: @comment, status: :created
     else
-      render json: { success: false, errors: @comment.errors.full_messages }, status: :unprocessable_entity
+      render json: @comment.errors, status: :unprocessable_entity
     end
+  end
+
+  private
+
+  def find_post
+    @post = Post.find(params[:post_id])
+  end
+
+  def comment_params
+    params.require(:comment).permit(:text, :post_id, :user_id)
   end
 end
