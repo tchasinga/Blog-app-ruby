@@ -1,0 +1,155 @@
+.person {
+  border: 2px solid black;
+  padding: 3%;
+}
+
+.render-container {
+  display: flex;
+  margin: 20px;
+}
+
+.features {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin: 2%;
+}
+
+.features-lastpage {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin: 2%;
+  margin-top: -75px;
+}
+
+.user-container {
+  margin-left: 20px;
+  border: 2px solid black;
+  padding: 3%;
+  width: 100%;
+}
+
+.username {
+  text-decoration: none;
+  color: black;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.username:hover {
+  cursor: pointer;
+}
+
+.user-container p {
+  font-weight: bold;
+  font-size: 13px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bio-container {
+  border: 2px solid black;
+  padding: 10px;
+  margin: 20px;
+}
+
+.main-container {
+  border: 2px solid black;
+  list-style: none;
+  height: 150px;
+  margin: 20px;
+}
+
+.blog {
+  text-decoration: none;
+  color: black;
+}
+
+.see-all {
+  padding: 10px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.see-all a {
+  text-decoration: none;
+  color: black;
+}
+
+.comments {
+  border: 2px solid black;
+  list-style: none;
+  padding: 4%;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.delete-comment-btn {
+  border: none;
+  background-color: #d91717;
+  color: white;
+  padding: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.comment {
+  font-size: 16px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.field {
+  width: 300px;
+  margin: 15px 1px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+}
+
+.submit {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  background-color: white;
+  -webkit-box-shadow: 3px 4px 5px 1px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 3px 4px 5px 1px rgba(0, 0, 0, 1);
+  box-shadow: 3px 4px 5px 1px rgba(0, 0, 0, 1);
+}
+
+.links-container {
+  width: 400px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.delete-btn {
+  border: none;
+  background-color: #d91717;
+  color: white;
+  padding: 8px;
+  margin-right: 3%;
+  cursor: pointer;
+  font-size: 14px;
+}
